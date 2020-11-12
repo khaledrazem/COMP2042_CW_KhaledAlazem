@@ -1,1 +1,12 @@
 changes made:
+-deleted all useless lines and methods
+-deleted all commented code
+-made a lane system for obstacles to be in
+-removed unnecesary parameters from obstacles such as height,width and ypos
+-made a tile menu with play and exit button
+-moved all images to images package and cahnged reference to them
+
+
+
+bugs:
+-if smashing all movements player goes off strip
