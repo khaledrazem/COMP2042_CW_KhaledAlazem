@@ -5,7 +5,10 @@ changes made:
 -removed unnecesary parameters from obstacles such as height,width and ypos
 -made a tile menu with play and exit button
 -moved all images to images package and cahnged reference to them
-
+-refatored main class
+-added start menu
+-added win menu
+-added info menu
 
 
 bugs:
