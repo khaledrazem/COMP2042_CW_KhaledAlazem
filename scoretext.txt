@@ -4,3 +4,9 @@ khaled
 khald
 320
 1
+omr
+1380
+9
+
+160
+1
