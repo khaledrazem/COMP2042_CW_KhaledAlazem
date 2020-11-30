@@ -18,7 +18,7 @@ public class ActMoveOnly implements Act {
 			actor.setX(-200);
 		if (actor.getX()<-100 && actor.speed<0)
 			actor.setX(800);
-		
+		System.out.println("toot");
 	}
 
 }
