@@ -15,9 +15,9 @@ public class ActMoveOnly implements Act {
 	@Override
 	public void restrictmovement() {
 		if (actor.getX()>600 && actor.speed>0)
-			actor.setX(-180);
-		if (actor.getX()<-300 && actor.speed<0)
-			actor.setX(700);
+			actor.setX(-200);
+		if (actor.getX()<-100 && actor.speed<0)
+			actor.setX(800);
 		
 	}
 

@@ -21,7 +21,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import p4_group_8_repo.Animal;
 import p4_group_8_repo.PlayerController;
 public abstract class World extends Pane {
     private AnimationTimer timer;
@@ -119,8 +118,13 @@ public abstract class World extends Pane {
         getChildren().add(0,actor);
         if (actor.getType()!=null) {
         	position temp=checknextfree(actor.getType());
+        	if(temp!=null) {
         	actor.setY(temp.y);
         	actor.setX(temp.x);
+        	}
+        	else {
+        		remove(actor);
+        	}
         }
         
     }
@@ -152,12 +156,14 @@ public position checknextfree(String type) {
 	 Random rand = new Random(); 
 	position pos=new position(rand.nextInt(150),710);
 	int j=0;
-	if (type=="TurtleLeft" || type=="TurtleRight" || type=="Logright" || type=="Logleft") {
+	if (type.contains("Turtle") || type.contains("Log")) {
 		j=6;
 	}
 	else {j=0;}
 	for ( int i=j; i < positionfull.length; i++) {
-		
+		if(i==5) {
+			return null;
+		}
 		
 		pos.y=710-50*(i+1);
 		
