@@ -9,7 +9,11 @@ import java.util.ArrayList;
 
 
 
-//commented
+/**
+ * This abstract class is used to define all objects in the game
+ * @author khaled
+ *
+ */
 public abstract class Actor extends ImageView{
 
 	protected String type;
@@ -28,7 +32,11 @@ public abstract class Actor extends ImageView{
 	
 	protected int imgSize;
 	
-	//moves player image dx pixels in the x direction and dy pixels in the y direction
+	/**
+	 * This method is used to move the object a number of pixels in the x direction and a number of pixels in the y direction
+	 * @param dx how many pixels to move in the x direction
+	 * @param dy how many pixels to move in the y direction
+	 */
     public void move(double dx, double dy) {
         setX(getX() + dx);
         setY(getY() + dy);
@@ -36,13 +44,21 @@ public abstract class Actor extends ImageView{
     
 
     
-    //fetches parent object to put objects in
+    /**
+     * fetches the parent object, which is the stage
+     * @return the parent node, the root node
+     */
     public World getWorld() {
         return (World) getParent();
     }
 
     
-    //checks intersections between objects
+    /**
+     * Method to check intersection between objects
+     * @param <A> an empty arraylist
+     * @param cls The object to check intersections with
+     * @return an array containing all actors that are intersecting
+     */
     public <A extends Actor> java.util.List<A> getIntersectingObjects(java.lang.Class<A> cls){
         ArrayList<A> someArray = new ArrayList<A>();
         for (A actor: getWorld().getObjects(cls)) {
@@ -53,17 +69,30 @@ public abstract class Actor extends ImageView{
         return someArray;
     }
     
+    /**
+     * types of actors such as turtle or log, used for placement functions
+     * @return the type of actor 
+     * @see World#checknextfree(String)
+     */
    public String getType() {
 	   return type;
    }
 
 
 
+   /**
+    * A call to the encapsulated method act
+    * @param now game timer
+    */
     public void act(long now) {
     	act.act(this,now);
     
     }
     
+    /**
+     * method for animal
+     * @param now
+     */
     public void handledeath(long now) {
     	
     }

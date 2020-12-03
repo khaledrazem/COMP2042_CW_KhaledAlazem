@@ -7,7 +7,11 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 
-//commented
+/**
+ * This class 
+ * @author khaled
+ *
+ */
 public class MyStage extends World{
 	MediaPlayer mediaPlayer;
 	static public int lvl=0;

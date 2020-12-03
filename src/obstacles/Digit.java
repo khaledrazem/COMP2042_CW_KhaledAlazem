@@ -4,7 +4,11 @@ import ACT.*;
 import javafx.scene.image.Image;
 
 
-//commented
+/**
+ * this class is for the digits used for score and has no runtime functionality
+ * @author khaled
+ *
+ */
 public class Digit extends Actor{
 	int dim; //dimensions
 	Image im1;

@@ -30,9 +30,13 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 
-//notes: fix moving while dead, change speed for levels
+//check player movement with log
 
-//commented
+/**
+ * This class is what starts the game
+ * @author khaled
+ *
+ */
 public class Main extends Application { 
 	ViewManager vm;
 
@@ -41,11 +45,13 @@ public class Main extends Application {
 		launch(args);
 	}
 
-	//program starts here
+	/**
+	 * This is where the project starts running from, and it starts by instantiating a viewmanager 
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		vm=new ViewManager(primaryStage);
-		vm.setMenu();
+
 		
 	}
 

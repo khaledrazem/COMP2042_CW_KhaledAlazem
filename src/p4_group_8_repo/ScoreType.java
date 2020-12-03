@@ -1,5 +1,10 @@
 package p4_group_8_repo;
 
+/**
+ * This class is a datatype used for storing the player score
+ * @author khaled
+ *
+ */
 public class ScoreType {
 
 
@@ -8,6 +13,12 @@ public class ScoreType {
     public int Level;
   
  
+    /**
+     * The constructor
+     * @param Username the username the player wants to use
+     * @param score the score the player has accumulated
+     * @param Level the level the player has reached
+     */
     public ScoreType(String Username, int score,int Level) {
     	
         this.Username = Username;

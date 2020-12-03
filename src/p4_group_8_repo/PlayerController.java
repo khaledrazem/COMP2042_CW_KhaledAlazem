@@ -5,6 +5,12 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+
+/**
+ * This class is responsible for handling i/o of the player
+ * @author khaled
+ *
+ */
 public class PlayerController{
 	
 	//movement animation images
@@ -25,12 +31,15 @@ public class PlayerController{
 		int imgSize = 40;
 		
 		private boolean second = false;   //used to swap between moving animtion, can be handelled better
-		boolean noMove = false;  //locks player movement
 		double movement = 25;
 		double movementX = 22;
 		
 		Animal animal;
 		
+		/**
+		 * This method sets up the player model by defining all sprites required for movement
+		 * @param animal This is a passed reference of the player object
+		 */
 public PlayerController(Animal animal) {
 	
 	this.animal=animal;
@@ -49,7 +58,13 @@ public PlayerController(Animal animal) {
 	
 }
 
-public void checkcontrol(long now) {
+/**
+ * This method runs with the game timer and its in charge for checking keyboard input and arranging appropriate actions once input is detected
+ * ands it changes animal sprites accordingly
+ * since it is a constantly running function it also calls the checkintersections function
+ * @see Animal#checkIntersections()
+ */
+public void checkcontrol() {
 	animal.checkIntersections();
 
 	//System.out.println(points);
@@ -98,7 +113,7 @@ public void checkcontrol(long now) {
 		});	
 	animal.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event) {
-				if (noMove) {}
+				if (animal.noMove) {}
 				else {
 				if (event.getCode() == KeyCode.W) {	  
 					if (animal.getY() < animal.w) {

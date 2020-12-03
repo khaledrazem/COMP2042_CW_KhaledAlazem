@@ -2,15 +2,20 @@ package ACT;
 
 import javafx.scene.image.Image;
 
+/**
+ * This functionality is used for turtles and wet turtles
+ * @author khaled
+ *
+ */
 public class ActTurtle implements Act {
-	
-	Actor actor;
 
-
+	/**
+	 * aside from movement, this method is also in charge of movement animations
+	 */
 	public void act(Actor actor, long now) {
 		
-		this.actor=actor;
-		restrictmovement();
+	
+		restrictmovement(actor);
 		
 		if (now/900000000  % 4 ==0) {
 			actor.setImage(actor.image2);
@@ -38,7 +43,7 @@ public class ActTurtle implements Act {
 	}
 
 	@Override
-	public void restrictmovement() {//if sprite goes out of frame, put it back at beginning
+	public void restrictmovement(Actor actor) {//if sprite goes out of frame, put it back at beginning
 
 		if (actor.getX() > 600 && actor.speed>0)
 			actor.setX(-200);

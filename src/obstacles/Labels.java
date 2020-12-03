@@ -3,6 +3,11 @@ package obstacles;
 import ACT.*;
 import javafx.scene.image.Image;
 
+/**
+ * This class is used for the highscore and score label at the top of the screen and has no runtime functionality 
+ * @author khaled
+ *
+ */
 public class Labels extends Actor{
 
 	int dim=100; //dimensions

@@ -18,6 +18,12 @@ import obstacles.Obstacle;
 import obstacles.Turtle;
 import obstacles.WetTurtle;
 
+
+/**
+ * This class is in charge of initializing all obstacles the player faces in the game
+ * @author khaled
+ *
+ */
 public class InitObjects{
 
 	MyStage background;
@@ -28,6 +34,10 @@ public class InitObjects{
 	
 	double bonus=0;
 	
+	
+	/**
+	 * The constructor does nothing but instatiate a list that keeps track of all digits on stage
+	 */
 	public InitObjects() {
 		
 		digits=new ArrayList<Actor>();
@@ -35,6 +45,10 @@ public class InitObjects{
 		
 		}
 
+	/**
+	 * This method returns the bonus speed each obstacle should get according to the level reached
+	 * Every level the speed increases by 0.05
+	 */
 	private void getbonus( ) {
 		for(int i=0;i<background.lvl;i++) {
 			bonus=bonus+0.05;
@@ -42,6 +56,10 @@ public class InitObjects{
 		}
 	}
 	
+	
+	/**
+	 * This method instantiates cars and trucks and adds them to to the func array which stores the game objects
+	 */
 	private void addobstacles() {
 		
 		func.add(new Obstacle("file:src/Images/truck1"+"Right.png",   Double.sum(0.35,bonus), 120, 120));
@@ -60,6 +78,9 @@ public class InitObjects{
 		
 	}
 	
+	/**
+	 * This method instantiates the 5 end holes in the game and adds them to the game background
+	 */
 	private void addends( ) {
 		background.add(new End());
 		background.add(new End());
@@ -68,6 +89,9 @@ public class InitObjects{
 		background.add(new End());
 	}
 	
+	/**
+	 * This method instantiates the logs and adds them to the func array which contains the objects
+	 */
 	private void addlogs( ) {
 		
 		
@@ -82,6 +106,9 @@ public class InitObjects{
 		
 	}
 	
+	/**
+	 * This method instantiates the turtles and wet turtles and adds them to the func arryay which stores the game objects
+	 */
 	private void addturtles( ) {
 
 
@@ -96,6 +123,13 @@ public class InitObjects{
 		
 	}
 	
+	/**
+	 * This is the main method of this class and its called to from other classes to instantiate all objects in the scene
+	 * @param background This is the root node of the scene, all objects need to be attached to it as a child
+	 * 
+	 * after it runs the instantiating functions, it shuffles the func array which will contain all moving objects and 
+	 * add them to the background afterwards
+	 */
 	public void addobjects(MyStage background) {
 		this.background=background;
 		//sets background image |
@@ -131,11 +165,20 @@ public class InitObjects{
 	}
 	
 
+	/**
+	 * This method instatiates the score and hiscore labels on top of the screen
+	 */
 	private void addlabels( ) {
 		background.add(new Labels("file:src/Images/HighScoreimage.png",140, 180, 10));
 		background.add(new Labels("file:src/Images/Scoreimage.png",100, 360, 10));
 	}
 	
+	/**
+	 * This method manages the digits used for the score and highscore on top of the screen
+	 * @param n This is the number to be displayed as digits
+	 * @param ishigh This boolean tells the method if it should place the digits under score or under highscore(if true then under highscore)
+	 * it also deleted all current score digits from the screen before updating them
+	 */
 	public void setNumber(int n,boolean ishigh ) { // set n as digits on screen
 		
 		for(int i=0;i<digits.size();i++) {

@@ -1,6 +1,7 @@
 package p4_group_8_repo;
 
 import javafx.animation.AnimationTimer;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -28,6 +29,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+/**
+ * This class handles all scene related work 
+ * @author khaled
+ *
+ */
 public class ViewManager {
 	
 	public Scene menuscene,infoscene;
@@ -53,20 +60,30 @@ public class ViewManager {
 	
 	AnimationTimer timer;
 	
+	/**
+	 * The constructor instantiates all nessecary objects for the scenes and sets the menu scene to display
+	 * @param PrimaryStage This is the base scene that is used to change whats displayed
+	 */
 	public ViewManager(Stage PrimaryStage) {
 		this.primaryStage=PrimaryStage;
 		primaryStage.setResizable(false);
-		//this.background=new MyStage();
-		
 		
 		objects = new InitObjects();
 		ScH=new ScoreHandler();
 		
         menuscene = CreatMenu();
         infoscene=CreateInfo();
+        
+        primaryStage.setScene(CreatMenu());
+		primaryStage.setTitle("GAME");
+		primaryStage.show();
 		
 	}
 	
+	/**
+	 * This function is called to create the menu scene
+	 * @return A reference to the menu scene that can be used to set the primary stage to
+	 */
 	private Scene CreatMenu() {
 		
 
@@ -112,6 +129,10 @@ public class ViewManager {
 		return menuscene;
 	}
 	
+	/**
+	 * This method is used to create an info screen scene
+	 * @return a reference to the infor screen scene to set the primary stage to
+	 */
 	private Scene CreateInfo() {
 		Button button4=new Button("Back");
 		button4.setOnAction(e -> primaryStage.setScene(menuscene));
@@ -144,24 +165,26 @@ public class ViewManager {
 	    return(new Scene(layout2,xres,yres));
 	}
 	
+	/**
+	 * This method creates the game scene and starts everything required for the game to run
+	 * @return  A referene to the game scene that the primary stage can be set to
+	 * @see {@link InitObjects#InitObjects()} {@link sessionHandler#sessionHandler(ViewManager)}
+	 */
 	Scene creategamescene() {
 		background = new MyStage();    //stage is aplication window
 	    Scene scene  = new Scene(background,xres,yres);//change x to 500, maybe not here
 	    //creates new scene with background as root node	    
-	    
-
-	    gamescene=scene;
-	    
-	    animal=background.animal;
-	    
-	    objects.addobjects(background);
-  		
 	  	background.start();
+	  	objects.addobjects(background);
 	  	SH=new sessionHandler(this); 
+	  	animal=SH.animal;
 	    return(scene);
 	}
 	
-	
+	/**
+	 * This method creates a scene with a table that shows the highest 10 scores of previous players
+	 * @return a reference to the table scene that the primary stage can be set to
+	 */
 	public Scene createtable() {
 		TableView table = new TableView();
 		table.setMaxSize(300, 400);
@@ -171,12 +194,12 @@ public class ViewManager {
 		TableColumn<ScoreType,String> scorecol = new TableColumn<>("Score");
 		TableColumn<ScoreType,String> lvlcol = new TableColumn<>("Level");
 		scorecol.setSortType(TableColumn.SortType.DESCENDING);
-		
-		
-		
+		table.setFixedCellSize(30);
+		table.setEditable(false);
 		namecol.setMinWidth(100);
 		scorecol.setMinWidth(100);
 		lvlcol.setMinWidth(100);
+		
 		
 		namecol.setCellValueFactory(new PropertyValueFactory<>("Username"));
 		scorecol.setCellValueFactory(new PropertyValueFactory<>("Score"));
@@ -187,11 +210,9 @@ public class ViewManager {
 			table.getItems().add(scores.get(j));
 			}
 		}
+		
 		table.getColumns().addAll(namecol,scorecol,lvlcol);
-		
-		
-		//table.setItems(data);
-		
+		table.getSortOrder().add(scorecol);
 		
 		Button button4=new Button("Back");
 		button4.setOnAction(e -> primaryStage.setScene(back));
@@ -208,6 +229,9 @@ public class ViewManager {
 
 	}
 	
+	/**
+	 * This method creates and sets a win screen for the player that apears when the player completes 10 levels
+	 */
 	public void createwin() {
 		
 		
@@ -250,6 +274,9 @@ public class ViewManager {
 		primaryStage.setScene(winscene);
 	}
 	
+/**
+ * This method creates and sets a scene between levels, it is similar to the win screen but has the ability to proceed to the next level
+ */
 public void createnextlvlscrn() {
 		
 		
@@ -297,10 +324,6 @@ public void createnextlvlscrn() {
 		back=nxtlvlscene;
 		primaryStage.setScene(nxtlvlscene);
 	}
-	public void setMenu() {
-		primaryStage.setScene(CreatMenu());
-		primaryStage.setTitle("GAME");
-		primaryStage.show();
-	}
+
 }
 	

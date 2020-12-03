@@ -4,7 +4,11 @@ import ACT.*;
 import javafx.scene.image.Image;
 
 
-//commented
+/**
+ * This class is used for the background image and has no runtime functionality
+ * @author khaled
+ *
+ */
 public class BackgroundImage extends Actor{
 
 	

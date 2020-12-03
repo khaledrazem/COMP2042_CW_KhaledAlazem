@@ -1,5 +1,10 @@
 package ACT;
 
+/**
+ * This functionality is for objects that have no runtime functionality
+ * @author khaled
+ *
+ */
 public class ActNothing implements Act {
 
 	@Override
@@ -9,7 +14,7 @@ public class ActNothing implements Act {
 	}
 
 	@Override
-	public void restrictmovement() {
+	public void restrictmovement(Actor actor) {
 		// nothing
 		
 	}

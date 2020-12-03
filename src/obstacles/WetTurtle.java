@@ -4,11 +4,20 @@ import ACT.*;
 import javafx.scene.image.Image;
 
 
-//commented
+
+/**
+ * this class is used for wet turtle and it has the turtle functionality 
+ * @author khaled
+ *
+ */
 public class WetTurtle extends Actor{
 	
 	int dim=100;
-	
+	/**
+	 * the constructor assigns images of the trutle and a type to be used to determine position
+	 * @param xpos position of object on the x axis
+	 * @param s the speed of teh object
+	 */
 	public WetTurtle(int xpos, double s) {
 		int temp=0;
 		int ypos=0;
@@ -36,10 +45,17 @@ public class WetTurtle extends Actor{
 		setImage(image2);
 	}
 	
-	//tells other classes if turtle is sunk
+	/**
+	 * checks if turtle is sunk or not 
+	 * @return boolean of whether the turtle is sunk or not
+	 */
 	public boolean isSunk() {
 		return sunk;
 	}
+	/**
+	 * method to retrieve speed of turtle
+	 * @return double which is the speed of the turtle
+	 */
 	public double getspeed() {
 		return speed;
 	}

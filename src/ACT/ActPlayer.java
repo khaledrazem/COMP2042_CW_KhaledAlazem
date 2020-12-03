@@ -2,17 +2,20 @@ package ACT;
 
 import javafx.scene.image.Image;
 
+/**
+ * This functionality is for the player
+ * @author khaled
+ *
+ */
 public class ActPlayer implements Act{
 
-	Actor actor;
-	
-	
-	
+	/**
+	 * This method calls restrict movement method that keeps the player within the screen, and it also checks for any death triggers and loads the correct images for the death animations
+	 */
 	@Override
 	public void act(Actor actor, long now) {
-		this.actor=actor;
 		
-		restrictmovement();
+		restrictmovement(actor);
 		if(actor.carDeath) {
 			actor.image1=new Image("file:src/Images/cardeath1.png", actor.imgSize, actor.imgSize, true, true);
 			actor.image2=new Image("file:src/Images/cardeath2.png", actor.imgSize, actor.imgSize, true, true);
@@ -29,14 +32,13 @@ public class ActPlayer implements Act{
 			actor.handledeath(now);
 		}
 		
-		//actor.checkIntersections();
 		
 		
 		
 	}
 	
 	@Override
-	public void restrictmovement() {
+	public void restrictmovement(Actor actor) {
 		if (actor.getY()<0 || actor.getY()>734) {  //stops player from going offscreen down or up
 			actor.setX(300);
 			actor.setY(679.8+actor.movement);

@@ -9,6 +9,11 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * This class handles writing and reading the player score to and from a list
+ * @author khaled
+ *
+ */
 public class ScoreHandler {
 
 	public ArrayList<ScoreType> scores;
@@ -20,6 +25,9 @@ public class ScoreHandler {
 	
 	public File file;
 	
+	/**
+	 * The constructor checks for the text file , and creates one if it doesnt exist, it also calls the readscores function to initialise the scoreboard
+	 */
 	public ScoreHandler() {
 		
 		scores = new ArrayList<ScoreType>();
@@ -46,7 +54,13 @@ public class ScoreHandler {
 		
 	}
 	
-	
+	/**
+	 * This function writes new data into the file, it works by first adding the new score to the scores list. and then writing all entities of the list to the file in the correct format
+	 * @param username the username the player wants to use
+	 * @param score the score the player has accumulated
+	 * @param level the level the player has reached
+	 * it also checks for an existing username, and if it exists and is lower than the new score then it replaces the lower score with the higher score
+	 */
 	public void writescores(String username,int score,int level) {
 		boolean found=false;
 		
@@ -63,12 +77,11 @@ public class ScoreHandler {
 			scores.add(new ScoreType(username,score,level));
 		}
 	    
-	   // scores.sort(Collections.reverseOrder());
 	    try {
 		    FileWriter myWriter = new FileWriter("scoretext.txt");
 			for (int i=0;i<scores.size();i++) {		
 
-				if (scores.get(i).Username!="") {
+				if (!scores.get(i).Username.equals("")) {
 			    myWriter.write(scores.get(i).Username+"\n"+scores.get(i).Score+"\n"+scores.get(i).Level+"\n");
 				}
 			}
@@ -81,6 +94,9 @@ public class ScoreHandler {
 		
 	}
 	
+	/**
+	 * This function reads the score data from a text file and stores in in an array 
+	 */
 	public void readscores() {
 		int second=1;
 		String user="";
@@ -115,11 +131,18 @@ public class ScoreHandler {
 		    }
 	}
 	
+	/**
+	 * A public method to get the scores
+	 * @return an array containing the player scores
+	 */
 	public ArrayList getscore() {
-		//readscores();
 		return(scores);
 	}
 	
+	/**
+	 * A function that gets the hiscore
+	 * @return the highest score
+	 */
 	public int gethiscore() {
 		int hi=0;
 		for(int i=0;i<scores.size();i++) {
