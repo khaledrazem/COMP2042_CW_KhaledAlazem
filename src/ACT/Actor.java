@@ -16,15 +16,30 @@ import java.util.ArrayList;
  */
 public abstract class Actor extends ImageView{
 
+	/**
+	 * Type stores the type of object to be added, is used for the slot system in class world, if type is null then its not automated
+	 */
 	protected String type;
+	/**
+	 * The functionality of each object
+	 */
 	protected Act act;
+	/**
+	 * Defines the speed of moving objects
+	 */
 	protected double speed;
 	
+	/**
+	 * These images are used to store the movement animations and death animations
+	 */
 	protected Image image1;
 	protected Image image2;
 	protected Image image3;
 	protected Image image4;
 	
+	/**
+	 * These are player related variables
+	 */
 	protected boolean sunk=false;
 	public static int points;
     protected boolean carDeath,waterDeath;
@@ -90,8 +105,8 @@ public abstract class Actor extends ImageView{
     }
     
     /**
-     * method for animal
-     * @param now
+     * method for animal death
+     * @param now game timer
      */
     public void handledeath(long now) {
     	

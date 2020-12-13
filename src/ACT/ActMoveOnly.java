@@ -1,7 +1,7 @@
 package ACT;
 
 /**
- * This functionality is for objects that need only movement functionality
+ * This functionality is for objects that only need to move
  * @author khaled
  *
  */

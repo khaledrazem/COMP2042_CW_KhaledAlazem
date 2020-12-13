@@ -8,7 +8,7 @@ import javafx.util.Duration;
 
 
 /**
- * This class 
+ * objects of this class are considered scenes with our own adjustments(music player,etc.)
  * @author khaled
  *
  */

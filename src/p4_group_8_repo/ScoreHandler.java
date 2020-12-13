@@ -21,7 +21,7 @@ public class ScoreHandler {
 	
 	int score=0;
 	
-	Animal animal;
+	Player animal;
 	
 	public File file;
 	
@@ -151,6 +151,14 @@ public class ScoreHandler {
 			}
 		}
 		return(hi);
+	}
+	
+	/**
+	 * Method to return player points
+	 * @return player points
+	 */
+	public int getPoints() {//sends points to calsses that requested
+		return (animal.points);
 	}
 		
 	

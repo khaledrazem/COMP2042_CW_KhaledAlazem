@@ -8,7 +8,7 @@ import java.util.List;
 
 import java.util.Random;
 
-import p4_group_8_repo.Animal;
+import p4_group_8_repo.Player;
 import p4_group_8_repo.PlayerController;
 import ACT.Actor;
 import javafx.animation.AnimationTimer;
@@ -33,6 +33,8 @@ public abstract class World extends Pane {
     
     static String[] positionslots=new String[] {"","","","","","","","","","",""};
 	static int[] positionfull=new int[] {3,3,3,3,3,3,3,3,3,3,3};
+	static int[] positionxaxis=new int[] {0,0,0,0,0,0,0,0,0,0,0};
+	
     
     
     /**
@@ -144,6 +146,7 @@ public abstract class World extends Pane {
         	position temp=checknextfree(actor.getType());
         	if(temp!=null) {
         	actor.setY(temp.y);
+        	//System.out.println(temp.x);
         	actor.setX(temp.x);
         	}
         	else {
@@ -192,8 +195,8 @@ public abstract class World extends Pane {
    * @return the y position the object should be placed in
    */
 public position checknextfree(String type) {
-	 Random rand = new Random(); 
-	position pos=new position(rand.nextInt(150),710);
+	Random rand = new Random(); 
+	position pos=new position(0,710);
 	int j=0;
 	if (type.contains("Turtle") || type.contains("Log")) {
 		j=6;
@@ -206,22 +209,39 @@ public position checknextfree(String type) {
 		
 		pos.y=710-50*(i+1);
 		
-		if (positionfull[i]>0) {
-			if (positionslots[i]=="") {
-				positionslots[i]=type;
-				positionfull[i]--;
-				return(pos);
+		
+		if (positionslots[i]=="") {
+			positionslots[i]=type;
+			pos.x=rand.nextInt(140)+10;//the x coordinate for the first item in a slot is random
+			
+			positionxaxis[i]=pos.x;
+			if(type.contains("truck")) {
+				positionfull[i]=positionfull[i]-2;
 			}
 			else {
+			positionfull[i]--;
+			}
+			return(pos);
+		}
+		else {
+			if (positionfull[i]>0) {
 				if (positionslots[i].contentEquals(type)) {
-					pos.x=pos.x+300*(3-positionfull[i]);
+					pos.x=positionxaxis[i]+(rand.nextInt(70)+150); //the x coordinate is dependant on how many items are already in the slot and on a random factor with just enough space to avoid overlap
+					positionxaxis[i]=pos.x;
+					if(type.contains("truckbig")) {
+						positionfull[i]=positionfull[i]-2;
+						pos.x=pos.x+80;
+					}
+					else {
 					positionfull[i]--;
-    				return(pos);
+					}
+					return(pos);
 				}
 				else {
 				}
-			}
 		}
+		}
+		
 	}
 	return(null);
 }

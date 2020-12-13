@@ -20,10 +20,12 @@ public class Log extends Actor {
 	 * @param s the speed the log moves in
 	 * @see World#checknextfree
 	 */
-	public Log(String imageLink, int xpos, double s) {
+	public Log(String imageLink, double s) {
 		act=new ActMoveOnly();
+		
 		int temp=0;
 		int ypos=0;
+		int xpos=0;
 		setImage(new Image(imageLink, dim,dim, true, true));
 		if (s>0) { type="Logright"+String.valueOf(s);}
 		else { type="Logleft"+String.valueOf(s);}
@@ -37,6 +39,10 @@ public class Log extends Actor {
 		
 	}
 	
+	/**
+	 * player uses this method o move alongside the log
+	 * @return the speed of the log
+	 */
 	public double getspeed() {
 		return speed;
 	}

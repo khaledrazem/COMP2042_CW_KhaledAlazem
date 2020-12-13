@@ -37,6 +37,9 @@ public class ActPlayer implements Act{
 		
 	}
 	
+	/**
+	 * Ensures that the player doesnt go offscreen
+	 */
 	@Override
 	public void restrictmovement(Actor actor) {
 		if (actor.getY()<0 || actor.getY()>734) {  //stops player from going offscreen down or up

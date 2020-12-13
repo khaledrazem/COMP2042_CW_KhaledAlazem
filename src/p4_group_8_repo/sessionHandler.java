@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 
 /**
  * This class is in charge of the game session
+ * It starts and ends the game session
  * @author khaled
  *
  */
@@ -13,7 +14,7 @@ public class sessionHandler {
 	
 	public MyStage background;
 	Stage PS;
-	public Animal animal;
+	public Player animal;
 	InitObjects objects;
 	ViewManager VM;
 	ScoreHandler ScH;
@@ -29,7 +30,7 @@ public class sessionHandler {
 	public sessionHandler(ViewManager VM) {
 		this.background=VM.background;
 		this.PS=VM.primaryStage;
-		this.objects=VM.objects;
+		objects = new InitObjects();
 		this.VM=VM;
 		this.ScH=VM.ScH;
 		
@@ -45,7 +46,8 @@ public class sessionHandler {
 	 * adds the initial score and hiscore
 	 */
 	public void start() {
-		animal=new Animal();
+		objects.addobjects(background);
+		animal=new Player();
     	background.addfront(animal);
 		PC=new PlayerController(animal);
 		background.playMusic();
@@ -66,7 +68,7 @@ public class sessionHandler {
             	if (animal.changeScore()) {  //if theres been a change in teh score
             		objects.setNumber(animal.getPoints(),false);  
             		}
-            	if (animal.getStop()) { //stops everything and alerts player if all 5 ends are filled
+            	if (checkends()) { //stops everything and alerts player if all 5 ends are filled
             		StopFunctions();
             	}
             }
@@ -79,6 +81,7 @@ public class sessionHandler {
 	 * This method runs when the game ends and it stops all game functions from living and calls the next action(either to get next level or the win screen)
 	 */
 	private void StopFunctions() {
+		background.lvl=background.lvl+1;
 		background.stopMusic();
 		background.stop();
 		timer.stop();
@@ -86,6 +89,19 @@ public class sessionHandler {
 		VM.createnextlvlscrn();
 		}
 		else {VM.createwin();}
+	}
+	
+	/**
+	 * This function runs to check that all end holes have been activated
+	 * @return true of all holes have been activated, false otherwise
+	 */
+	private boolean checkends() {
+		for(int i=0;i<objects.ends.size();i++) {
+		if(!objects.ends.get(i).isActivated()) {
+			return(false);
+		}
+		}
+		return(true);
 	}
 	
 }

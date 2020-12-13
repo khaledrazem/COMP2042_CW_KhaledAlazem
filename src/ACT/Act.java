@@ -1,5 +1,10 @@
 package ACT;
 
+/**
+ * abstract class for functionality
+ * @author khaled
+ * @see ActMoveOnly, ActNothing, ActTurtle,ActPlayer
+ */
 public interface Act {
 
 

@@ -14,9 +14,9 @@ public class Turtle extends Actor{
 	int dim=110;
 	
 	/**
-	 * the constructor assigns images of the trutle and a type to be used to determine position
+	 * the constructor assigns images of the turtle and a type to be used to determine position
 	 * @param xpos position of object on the x axis
-	 * @param s the speed of teh object
+	 * @param s the speed of the object
 	 */
 	public Turtle(int xpos,  double s) {
 		int temp=0;
@@ -30,7 +30,7 @@ public class Turtle extends Actor{
 		image2 = new Image("file:src/Images/TurtleAnimation2.png", dim, dim, true, true);
 		image3 = new Image("file:src/Images/TurtleAnimation3.png", dim, dim, true, true);
 		image4 = null;
-		type="TurtleLeft+String.valueOf(s)";
+		type="Turtle"+String.valueOf(s);
 		
 		if (s>0) {
 			
@@ -38,9 +38,10 @@ public class Turtle extends Actor{
 			image1 = new Image("file:src/Images/TurtleAnimation1mirror.png", dim, dim, true, true);
 			image2 = new Image("file:src/Images/TurtleAnimation2mirror.png", dim, dim, true, true);
 			image3 = new Image("file:src/Images/TurtleAnimation3mirror.png", dim, dim, true, true);
-			type="TurtleRight+String.valueOf(s)";
+			
 			
 		}
+		
 		
 	
 		if (temp!=0) {ypos=temp;}
@@ -50,6 +51,10 @@ public class Turtle extends Actor{
 		setImage(image2);
 	}
 	
+	/**
+	 * Player uses this to move alongside the turtle
+	 * @return teh speed of the turtle
+	 */
 	public double getspeed() {
 		return speed;
 	}

@@ -14,23 +14,34 @@ import obstacles.Digit;
 import obstacles.End;
 import obstacles.Labels;
 import obstacles.Log;
-import obstacles.Obstacle;
+import obstacles.Vehicle;
 import obstacles.Turtle;
 import obstacles.WetTurtle;
 
 
 /**
- * This class is in charge of initializing all obstacles the player faces in the game
+ * This class is in charge of initializing all obstacles attached to the root node
  * @author khaled
  *
  */
 public class InitObjects{
 
+	/**
+	 * The root node
+	 */
 	MyStage background;
 	
+	/**
+	 * array to keep track of the digits on the screen
+	 */
 	public ArrayList<Actor> digits;
 	
+	/**
+	 * Array to keep track of all movable objects
+	 */
 	ArrayList<Actor> func=new ArrayList<Actor>();
+	
+	ArrayList<End> ends=new ArrayList<End>();
 	
 	double bonus=0;
 	
@@ -51,7 +62,7 @@ public class InitObjects{
 	 */
 	private void getbonus( ) {
 		for(int i=0;i<background.lvl;i++) {
-			bonus=bonus+0.05;
+			bonus=bonus+0.0625;
 			
 		}
 	}
@@ -61,17 +72,16 @@ public class InitObjects{
 	 * This method instantiates cars and trucks and adds them to to the func array which stores the game objects
 	 */
 	private void addobstacles() {
-		
-		func.add(new Obstacle("file:src/Images/truck1"+"Right.png",   Double.sum(0.35,bonus), 120, 120));
-		func.add(new Obstacle("file:src/Images/truck1"+"Right.png",  Double.sum(0.35,bonus), 120, 120));
-		func.add(new Obstacle("file:src/Images/truck1"+"Right.png",  Double.sum(0.35,bonus), 120, 120));
-		func.add(new Obstacle("file:src/Images/car1Left.png",  Double.sum(-0.35,-bonus), 50, 50));
-		func.add(new Obstacle("file:src/Images/car1Left.png",  Double.sum(-0.35,-bonus), 50, 50));
-		func.add(new Obstacle("file:src/Images/car1Left.png",  Double.sum(-0.35,-bonus), 50, 50));
-		func.add(new Obstacle("file:src/Images/car1right.png",  Double.sum(0.55,bonus), 50, 50));
-		func.add(new Obstacle("file:src/Images/truck2Right.png",  Double.sum(0.35,bonus), 200, 200));
-		func.add(new Obstacle("file:src/Images/truck2Right.png",   Double.sum(0.35,bonus), 200, 200));
-		func.add(new Obstacle("file:src/Images/car1Left.png",  Double.sum(-0.35,-bonus), 50, 50));
+		func.add(new Vehicle("file:src/Images/truck1"+"Right.png",   Double.sum(0.35,bonus), 120, 120));
+		func.add(new Vehicle("file:src/Images/truck1"+"Right.png",  Double.sum(0.35,bonus), 120, 120));
+		func.add(new Vehicle("file:src/Images/truck1"+"Right.png",  Double.sum(0.35,bonus), 120, 120));
+		func.add(new Vehicle("file:src/Images/car1Left.png",  Double.sum(-0.35,-bonus), 50, 50));
+		func.add(new Vehicle("file:src/Images/car1Left.png",  Double.sum(-0.35,-bonus), 50, 50));
+		func.add(new Vehicle("file:src/Images/car1Left.png",  Double.sum(-0.35,-bonus), 50, 50));
+		func.add(new Vehicle("file:src/Images/car1right.png",  Double.sum(0.55,bonus), 50, 50));
+		func.add(new Vehicle("file:src/Images/truck2Right.png",  Double.sum(0.35,bonus), 200, 200));
+		func.add(new Vehicle("file:src/Images/truck2Right.png",   Double.sum(0.35,bonus), 200, 200));
+		func.add(new Vehicle("file:src/Images/car1Left.png",  Double.sum(-0.35,-bonus), 50, 50));
 		
 	
 		
@@ -82,11 +92,11 @@ public class InitObjects{
 	 * This method instantiates the 5 end holes in the game and adds them to the game background
 	 */
 	private void addends( ) {
-		background.add(new End());
-		background.add(new End());
-		background.add(new End());
-		background.add(new End());
-		background.add(new End());
+		ends.add(new End());
+		//ends.add(new End());
+		ends.add(new End());
+		ends.add(new End());
+	//	ends.add(new End());
 	}
 	
 	/**
@@ -95,14 +105,14 @@ public class InitObjects{
 	private void addlogs( ) {
 		
 		
-		func.add(new Log("file:src/Images/log3.png", 0, Double.sum(bonus, 0.25)));
-		func.add(new Log("file:src/Images/log3.png", 220,  Double.sum(bonus, 0.25)));
-		func.add(new Log("file:src/Images/log3.png", 440,  Double.sum(bonus, 0.25)));
-		func.add(new Log("file:src/Images/logs.png",  0,  Double.sum(-bonus, -0.45)));
-		func.add(new Log("file:src/Images/logs.png",  400,  Double.sum(-bonus, -0.45)));
-		func.add(new Log("file:src/Images/log3.png",  50, Double.sum(bonus, 0.25)));
-		func.add(new Log("file:src/Images/log3.png", 270, Double.sum(bonus, 0.25)));
-		func.add(new Log("file:src/Images/log3.png",  490, Double.sum(bonus, 0.25)));
+		func.add(new Log("file:src/Images/log3.png",  Double.sum(bonus, 0.25)));
+		func.add(new Log("file:src/Images/log3.png",   Double.sum(bonus, 0.25)));
+		func.add(new Log("file:src/Images/log3.png",   Double.sum(bonus, 0.25)));
+		func.add(new Log("file:src/Images/logs.png",   Double.sum(-bonus, -0.45)));
+		func.add(new Log("file:src/Images/logs.png",   Double.sum(-bonus, -0.45)));
+		func.add(new Log("file:src/Images/log3.png",   Double.sum(bonus, 0.25)));
+		func.add(new Log("file:src/Images/log3.png",  Double.sum(bonus, 0.25)));
+		func.add(new Log("file:src/Images/log3.png",  Double.sum(bonus, 0.25)));
 		
 	}
 	
@@ -133,7 +143,7 @@ public class InitObjects{
 	public void addobjects(MyStage background) {
 		this.background=background;
 		//sets background image |
-	  		
+	  		func.clear();
 	  	    
 	  		getbonus();
 	  		
@@ -152,6 +162,9 @@ public class InitObjects{
 	  		addlabels();
 	  		
 
+	  		for(int i=0;i<ends.size();i++) {
+	  			background.add(ends.get(i));
+	  		}
 	  		Collections.shuffle(func);
 	  		
 			for(int i=0;i<func.size();i++) {

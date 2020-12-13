@@ -49,8 +49,6 @@ public class ViewManager {
 	
 	public Stage primaryStage;
 	public MyStage background;
-	public InitObjects objects;
-	public Animal animal;
 	sessionHandler SH;
 	public ScoreHandler ScH;
 	
@@ -68,7 +66,7 @@ public class ViewManager {
 		this.primaryStage=PrimaryStage;
 		primaryStage.setResizable(false);
 		
-		objects = new InitObjects();
+		
 		ScH=new ScoreHandler();
 		
         menuscene = CreatMenu();
@@ -175,9 +173,8 @@ public class ViewManager {
 	    Scene scene  = new Scene(background,xres,yres);//change x to 500, maybe not here
 	    //creates new scene with background as root node	    
 	  	background.start();
-	  	objects.addobjects(background);
+	  	
 	  	SH=new sessionHandler(this); 
-	  	animal=SH.animal;
 	    return(scene);
 	}
 	
@@ -234,13 +231,17 @@ public class ViewManager {
 	 */
 	public void createwin() {
 		
-		
+		Label label3=new Label("");
+		if(ScH.getPoints()>ScH.gethiscore()) {
+			label3=new Label("NEW HIGH SCORE!");
+			}
+		label3.setFont(new Font("Arial", 28));
 		
 		
 		Label label1=new Label("YOU HAVE DID A WIN.");
 		label1.setFont(new Font("Arial", 24));
 		
-		Label label2=new Label("Score: "+animal.getPoints());
+		Label label2=new Label("Score: "+ScH.getPoints());
 		label1.setFont(new Font("Arial", 24));
 		
 		Button button4=new Button("Scoreboard");
@@ -261,13 +262,13 @@ public class ViewManager {
 	    button3.setStyle("-fx-text-fill: #00ff00;-fx-background-color:Green");
 
 	    button3.setOnAction(action -> {
-	        ScH.writescores(textField.getText(),animal.getPoints(),background.lvl);
+	        ScH.writescores(textField.getText(),ScH.getPoints(),background.lvl);
 	    });
 		
 		VBox layout1=new VBox();         
 		layout1.setSpacing(50);
 		layout1.setAlignment(Pos.CENTER);// Changed the alignment to center-left
-		layout1.getChildren().addAll(label1,label2,textField,button3,button4,button2);
+		layout1.getChildren().addAll(label1,label3,label2,textField,button3,button4,button2);
 		layout1.setBackground(new Background(new BackgroundFill(Color.rgb(0,255,0), CornerRadii.EMPTY, Insets.EMPTY)));
 		Scene winscene=new Scene(layout1,xres,yres);
 		back=winscene;
@@ -280,13 +281,13 @@ public class ViewManager {
 public void createnextlvlscrn() {
 		
 		
-	background.lvl=background.lvl+1;
+	
 	background.removeall();
 	
 		Label label1=new Label("YOU HAVE DID LEVEL "+background.lvl+"!");
 		label1.setFont(new Font("Arial", 24));
 		
-		Label label2=new Label("Score: "+animal.getPoints());
+		Label label2=new Label("Score: "+ScH.getPoints());
 		label1.setFont(new Font("Arial", 24));
 		
 		Button button4=new Button("next level");
@@ -312,7 +313,7 @@ public void createnextlvlscrn() {
 	    button3.setStyle("-fx-text-fill: #00ff00;-fx-background-color:Green");
 
 	    button3.setOnAction(action -> {
-	        ScH.writescores(textField.getText(),animal.getPoints(),background.lvl);
+	        ScH.writescores(textField.getText(),ScH.getPoints(),background.lvl);
 	    });
 		
 		VBox layout1=new VBox();         

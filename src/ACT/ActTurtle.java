@@ -42,12 +42,15 @@ public class ActTurtle implements Act {
 
 	}
 
+	/**
+	 * Ensures turtle doesnt go offscreen
+	 */
 	@Override
 	public void restrictmovement(Actor actor) {//if sprite goes out of frame, put it back at beginning
 
 		if (actor.getX() > 600 && actor.speed>0)
 			actor.setX(-200);
-		if (actor.getX() < -75 && actor.speed<0)
+		if (actor.getX() < -100 && actor.speed<0)
 			actor.setX(600);
 		
 	}

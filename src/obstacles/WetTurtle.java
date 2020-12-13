@@ -14,7 +14,7 @@ public class WetTurtle extends Actor{
 	
 	int dim=100;
 	/**
-	 * the constructor assigns images of the trutle and a type to be used to determine position
+	 * the constructor assigns images of the turtle and a type to be used to determine position
 	 * @param xpos position of object on the x axis
 	 * @param s the speed of teh object
 	 */
@@ -28,13 +28,12 @@ public class WetTurtle extends Actor{
 		image2 = new Image("file:src/Images/TurtleAnimation2Wet.png", dim, dim, true, true);
 		image3 = new Image("file:src/Images/TurtleAnimation3Wet.png", dim, dim, true, true);
 		image4 = new Image("file:src/Images/TurtleAnimation4Wet.png", dim, dim, true, true);
-		type="TurtleLeft+String.valueOf(s)";
+		type="Turtle"+String.valueOf(s);
 		
 		if (s>0) {
 			image1 = new Image("file:src/Images/TurtleAnimation1mirror.png", dim, dim, true, true);
 			image2 = new Image("file:src/Images/TurtleAnimation2Wetmirror.png", dim, dim, true, true);
 			image3 = new Image("file:src/Images/TurtleAnimation3Wetmirror.png", dim, dim, true, true);
-			type="TurtleRight+String.valueOf(s)";
 		}
 			
 		if (temp!=0) {ypos=temp;}
