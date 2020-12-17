@@ -18,9 +18,10 @@ public class WetTurtle extends Actor{
 	 * @param xpos position of object on the x axis
 	 * @param s the speed of teh object
 	 */
-	public WetTurtle(int xpos, double s) {
+	public WetTurtle(double s) {
 		int temp=0;
 		int ypos=0;
+		int xpos=0;
 		
 		act=new ActTurtle();
 		//assign entity details

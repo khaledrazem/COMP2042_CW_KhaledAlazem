@@ -18,9 +18,10 @@ public class Turtle extends Actor{
 	 * @param xpos position of object on the x axis
 	 * @param s the speed of the object
 	 */
-	public Turtle(int xpos,  double s) {
+	public Turtle(double s) {
 		int temp=0;
 		int ypos=0;
+		int xpos=0;
 		
 		act=new ActTurtle();
 		

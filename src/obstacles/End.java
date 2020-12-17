@@ -13,7 +13,7 @@ public class End extends Actor{
 	boolean activated = false;
 	int dim=60;
 	int ypos=92;
-	int xpos[]= {8,115,220,325,430};
+	int xpos[]= {8,220,430};
 	static int i=0;
 	
 	/**
@@ -26,7 +26,7 @@ public class End extends Actor{
 		setX(xpos[i]);
 		setY(ypos);
 		i++;
-		if(i==5) {i=0;}
+		if(i==3) {i=0;}
 		setImage(new Image("file:src/Images/End.png", dim, dim, true, true));
 	}
 	

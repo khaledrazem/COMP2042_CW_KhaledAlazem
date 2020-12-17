@@ -1,7 +1,7 @@
 package ACT;
 
 import javafx.scene.image.Image;
-
+import p4_group_8_repo.Player;
 /**
  * This functionality is for the player
  * @author khaled
@@ -14,22 +14,22 @@ public class ActPlayer implements Act{
 	 */
 	@Override
 	public void act(Actor actor, long now) {
-		
-		restrictmovement(actor);
-		if(actor.carDeath) {
-			actor.image1=new Image("file:src/Images/cardeath1.png", actor.imgSize, actor.imgSize, true, true);
-			actor.image2=new Image("file:src/Images/cardeath2.png", actor.imgSize, actor.imgSize, true, true);
-			actor.image3=new Image("file:src/Images/cardeath3.png", actor.imgSize, actor.imgSize, true, true);
-			actor.image4=null;
-			actor.handledeath(now);
+		Player player=(Player)actor;
+		restrictmovement(player);
+		if(player.carDeath) {
+			player.image1=new Image("file:src/Images/cardeath1.png", actor.imgSize, actor.imgSize, true, true);
+			player.image2=new Image("file:src/Images/cardeath2.png", actor.imgSize, actor.imgSize, true, true);
+			player.image3=new Image("file:src/Images/cardeath3.png", actor.imgSize, actor.imgSize, true, true);
+			player.image4=null;
+			player.handledeath(now);
 		}
 		
-		if(actor.waterDeath) {
-			actor.image1=new Image("file:src/Images/waterdeath1.png", actor.imgSize,actor.imgSize , true, true);
-			actor.image2=new Image("file:src/Images/waterdeath2.png", actor.imgSize,actor.imgSize , true, true);
-			actor.image3=new Image("file:src/Images/waterdeath3.png", actor.imgSize,actor.imgSize , true, true);
-			actor.image4=new Image("file:src/Images/waterdeath4.png", actor.imgSize,actor.imgSize , true, true);
-			actor.handledeath(now);
+		if(player.waterDeath) {
+			player.image1=new Image("file:src/Images/waterdeath1.png", actor.imgSize,actor.imgSize , true, true);
+			player.image2=new Image("file:src/Images/waterdeath2.png", actor.imgSize,actor.imgSize , true, true);
+			player.image3=new Image("file:src/Images/waterdeath3.png", actor.imgSize,actor.imgSize , true, true);
+			player.image4=new Image("file:src/Images/waterdeath4.png", actor.imgSize,actor.imgSize , true, true);
+			player.handledeath(now);
 		}
 		
 		

@@ -171,6 +171,7 @@ public abstract class World extends Pane {
         getChildren().removeAll();
         positionslots=new String[] {"","","","","","","","","","",""};
     	positionfull=new int[] {3,3,3,3,3,3,3,3,3,3,3};
+    	positionxaxis=new int[] {0,0,0,0,0,0,0,0,0,0,0};
     }
     
     /**

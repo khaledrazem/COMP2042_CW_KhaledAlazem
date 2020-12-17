@@ -236,6 +236,7 @@ public class ViewManager {
 			label3=new Label("NEW HIGH SCORE!");
 			}
 		label3.setFont(new Font("Arial", 28));
+		label3.setStyle("-fx-text-fill:Red;");
 		
 		
 		Label label1=new Label("YOU HAVE DID A WIN.");

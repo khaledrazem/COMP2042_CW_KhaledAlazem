@@ -122,12 +122,12 @@ public class InitObjects{
 	private void addturtles( ) {
 
 
-			func.add(new Turtle(100, Double.sum(bonus, 0.35)));
-			func.add(new Turtle(500, Double.sum(bonus, 0.35)));
-			func.add(new WetTurtle(300, Double.sum(bonus, 0.35)));
-			func.add(new WetTurtle(600, Double.sum(-bonus, -0.35)));
-			func.add(new WetTurtle(400, Double.sum(-bonus, -0.35)));
-			func.add(new WetTurtle(200, Double.sum(-bonus, -0.35)));
+			func.add(new Turtle( Double.sum(bonus, 0.35)));
+			func.add(new Turtle( Double.sum(bonus, 0.35)));
+			func.add(new WetTurtle( Double.sum(bonus, 0.35)));
+			func.add(new WetTurtle( Double.sum(-bonus, -0.35)));
+			func.add(new WetTurtle( Double.sum(-bonus, -0.35)));
+			func.add(new WetTurtle( Double.sum(-bonus, -0.35)));
 			
 
 		

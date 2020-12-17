@@ -104,12 +104,6 @@ public abstract class Actor extends ImageView{
     
     }
     
-    /**
-     * method for animal death
-     * @param now game timer
-     */
-    public void handledeath(long now) {
-    	
-    }
+
 
 }

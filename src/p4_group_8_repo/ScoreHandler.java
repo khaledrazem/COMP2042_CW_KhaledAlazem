@@ -21,6 +21,9 @@ public class ScoreHandler {
 	
 	int score=0;
 	
+	/**
+	 * reference to player object, initialised in session handler
+	 */
 	Player animal;
 	
 	public File file;

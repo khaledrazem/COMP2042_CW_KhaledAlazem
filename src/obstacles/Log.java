@@ -27,10 +27,8 @@ public class Log extends Actor {
 		int ypos=0;
 		int xpos=0;
 		setImage(new Image(imageLink, dim,dim, true, true));
-		if (s>0) { type="Logright"+String.valueOf(s);}
-		else { type="Logleft"+String.valueOf(s);}
-			
-			
+		type="Log"+String.valueOf(s);
+	
 		if (temp!=0) {ypos=temp;}
 			
 		setX(xpos);
